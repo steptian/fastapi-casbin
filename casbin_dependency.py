@@ -1,5 +1,6 @@
 from fastapi import Depends, HTTPException
 from enforcer import get_enforcer
+from audit_log import log_permission_check
 
 def casbin_dependency(sub, obj, act, tenant, org="*", data_id="*", data_ctx=None):
     def checker():
@@ -19,7 +20,10 @@ def casbin_dependency(sub, obj, act, tenant, org="*", data_id="*", data_ctx=None
                 if not eval_data_filter(data_filter, data_ctx):
                     continue
             # 通过
+            log_permission_check(sub, obj, act, True, f"tenant={tenant}, org={org}, data_id={data_id}")
             return
+        # 失败时记录详细日志
+        log_permission_check(sub, obj, act, False, f"tenant={tenant}, org={org}, data_id={data_id}, ctx={data_ctx}")
         raise HTTPException(status_code=403, detail="无权限")
     return checker
 
