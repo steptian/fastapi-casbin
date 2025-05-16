@@ -1,0 +1,60 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtualenv
+.venv/
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+audit.log
+
+# Databases
+*.db
+*.sqlite3
+
+# Test/coverage
+htmlcov/
+.coverage
+.tox/
+.nox/
+.pytest_cache/
+
+# Misc
+*.bak
+*.swp
+*.tmp
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Celery
+celerybeat-schedule
+
+# FastAPI static/media
+static/
+media/ 
+
+todo.md
+fastapi-casbin.md
